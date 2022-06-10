@@ -10,12 +10,13 @@
         <%= link_to "Home", root_path, class:"nav-link active"%>
         </li>
          <li class="nav-item">
-         <%= link_to "About","abouts", class:"nav-link active" %>
+         <%= link_to "About","about", class:"nav-link active" %>
         </li>
       </ul>
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <%# <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button> %>
+        <%= link_to "Sign-Up","signup", class: "btn btn-outline-success" %>
       </form>
     </div>
   </div>
