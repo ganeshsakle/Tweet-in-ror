@@ -1,6 +1,8 @@
-<%@user.each do |u|%>
-<ul>
-<% z=u.id.to_i%>
-<li> <%= link_to u.name, "/users/#{z}" %> </li>
-</ul>
-<%end%>
+   <% @user.each do |u|%>
+        <ul>
+                <% z=u.id.to_i%>
+                <li>
+                <%= link_to u.name, "/users/#{z}"%>
+                </li>
+        </ul>
+   <%end%>
