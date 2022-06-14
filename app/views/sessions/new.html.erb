@@ -1,15 +1,14 @@
-
-<section class="vh-100 bg-image">
-  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-    <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
+<%= render "layouts/navbar"%>
+<section class="vh-50 bg-image">
+  <div class="mask d-flex align-items-center h-50 gradient-custom-3">
+    <div class="container h-50">
+      <div class="row d-flex justify-content-center align-items-center h-50">
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-          <div class="card" style="border-radius: 15px;">
             <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">Login</h2>
+              <h2 class="text-uppercase text-center mb-10">Login</h2>
 
                 <div class="form-outline mb-4">
-                <%= form_with(model: @user, local: true) do |f| %>
+                <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
 
                    <%= f.label :email , class:"form-label"%>
                    <%= f.email_field :email ,class:"form-control form-control-lg"%>
@@ -17,13 +16,12 @@
                    <%= f.label :password, class:"form-label" %>
                    <%= f.password_field :password, class:"form-control form-control-lg" %><br>
                 
-                   <%= f.submit "Create my account", class:"btn btn-success btn-block btn-lg gradient-custom-4 text-body"%>
+                   <%= f.submit "Login", class:"btn btn-success btn-block btn-lg gradient-custom-4 text-body"%>
                    <p>New User? <%=link_to "Sign-up now!", "signup"%></p>
                 <%end%>
                 </div>
 
             </div>
-          </div>
         </div>
       </div>
     </div>
