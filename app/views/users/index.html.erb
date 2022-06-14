@@ -1,8 +1,8 @@
    <% @user.each do |u|%>
         <ul>
-                <% z=u.id.to_i%>
-                <li>
-                <%= link_to u.name, "/users/#{z}"%>
-                </li>
+          <% userId = u.id.to_i%>
+          <li>
+            <%= link_to u.name, "/users/#{userId}"%>
+          </li>
         </ul>
    <%end%>
