@@ -1,8 +1,14 @@
-   <% @user.each do |u|%>
-        <ul>
-          <% userId = u.id.to_i%>
-          <li>
-            <%= link_to u.name, "/users/#{userId}"%>
-          </li>
-        </ul>
-   <%end%>
+  <%= render "layouts/navbar"%>
+  
+  <% if logged_in?%>
+    <% @user.each do |u|%>
+          <ul>
+            <% userId = u.id.to_i%>
+            <li>
+              <%= link_to u.name, "/users/#{userId}"%>
+            </li>
+          </ul>
+    <%end%>
+  <%else%>
+   <h1>Welcome!...</h1>
+  <%end%>

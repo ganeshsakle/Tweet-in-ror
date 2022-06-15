@@ -7,12 +7,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       </ul>
+      <% if logged_in? %>
+        <%= link_to "Users", users_path, class:"btn btn-outline-success me-4"%>
+        <%= link_to "Profile", current_user,  class: "btn btn-outline-success me-4" %>
+        <%= link_to "Setting", "#", class: "btn btn-outline-success me-4"%>
+        <%= link_to "Log-out", "#",method: :delete, class: "btn btn-outline-success"%>
+      <% else %>
       <form class="d-flex" role="search">
         <%# <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button> %>
         <%= link_to "Sign-Up","signup", class: "btn btn-outline-success me-4" %>
         <%= link_to "Log-in","login", class: "btn btn-outline-success" %>
       </form>
+      <% end %>
     </div>
   </div>
 </nav>
