@@ -5,4 +5,9 @@ class User < ApplicationRecord
     validates :email, presence: true, format: {with: VALID_REGEX_EMAIL}, uniqueness: true
     has_secure_password
     validates :password, presence: true, length: {minimum: 6}, allow_nil: true
+
+    def User.new_token    # returns a random token of 22 char
+        SecureRandom.urlsafe_base64 
+    end
+
 end
