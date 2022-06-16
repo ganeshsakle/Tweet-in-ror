@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.2'
 
+gem 'better_errors', '~> 2.9', '>= 2.9.1'
 
 gem 'gravtastic'
 

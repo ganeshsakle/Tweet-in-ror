@@ -27,6 +27,12 @@
                     <p class="mb-0">0</p>
                   </div>
                 </div>
+                <% if @user == current_user%>
+                <div class="d-flex pt-1">
+                <%= link_to "Update profile", edit_user_path, class:"btn btn-outline-primary me-1 flex-grow-1"%>
+                <%= link_to "Delete profile", "#",class:"btn btn-outline-primary me-1 flex-grow-1"%>
+                </div>
+                <% end %>
               </div>
             </div>
           </div>
