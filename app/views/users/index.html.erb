@@ -1,16 +1,23 @@
-  <%= render "layouts/navbar"%>
-  
-  <% if logged_in?%>
-    <% @user.each do |u|%>
-          <ul>
-            <% userId = u.id.to_i%>
-            <li>
-              <%= link_to u.name, "/users/#{userId}"%>
-            </li>
-          </ul>
-    <%end%>
-  <%else%>
+<%= render "layouts/navbar"%>
+
+<% if logged_in? %>
+    <%= will_paginate %>
+      <ul>
+        <% @users.each do |user|%>
+        <li>
+            <%= gravatar_for user, size: 50 %>
+            <%= link_to user.name, user %>
+            <% if current_user.admin? && current_user%>
+              <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" }%>
+            <% end %>
+        </li>
+        <%end%>
+      </ul>
+    <%= will_paginate %>
+
+
+<%else%>
    <h1><center>Welcome.. to the Tweets</center></h1>
    <p><center>Login/Sign-up to explore more!</center></p>
+<%end%>
 
-  <%end%>

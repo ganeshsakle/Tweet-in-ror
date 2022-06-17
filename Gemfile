@@ -1,7 +1,13 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+
+
 ruby '3.0.2'
+
+gem 'will_paginate', '~> 3.3', '>= 3.3.1'  # for pagination
+gem 'bootstrap-will_paginate', '~> 1.0'
+gem 'will_paginate-bootstrap-style'
 
 gem 'better_errors', '~> 2.9', '>= 2.9.1'
 
