@@ -76,11 +76,6 @@ Rails.application.configure do
 
 
   config.action_mailer.delivery_method = :sendmail
-# Defaults to:
-# config.action_mailer.sendmail_settings = {
-#   location: '/usr/sbin/sendmail',
-#   arguments: '-i'
-# }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_options = {from: 'noreply@tweetapp.com'}
@@ -92,7 +87,6 @@ Rails.application.configure do
   domain: 'gmail.com',
   user_name: 'tweetapp4@gmail.com',
   password: 'baisaqpcyhpyvnil',
-  authentication: 'plain',
-  #enable_starttls_auto: true   
+  authentication: 'plain',  
   }
 end
