@@ -61,8 +61,8 @@ class UsersController < ApplicationController
   end
 
   def otpverifier
-    @user = current_user
-    if @user.update(otp: @user.otp) && otp_checker(@user)
+    current_user.update(otp: random_number)
+    if otp_checker(current_user)
       flash[:success] = "Profile Verified"
       @user.reload
       redirect_to @user
@@ -70,6 +70,7 @@ class UsersController < ApplicationController
     flash[:danger] = "Wrong OTP!"
     render 'users/otpform'
     end
+    #byebug
   end
 
 
@@ -100,7 +101,7 @@ class UsersController < ApplicationController
 
     def random_number
       @random_number = rand(1000..9999)
-      $random_number_global=@random_number
+      $random_number_global = @random_number
       return @random_number
     end
 
