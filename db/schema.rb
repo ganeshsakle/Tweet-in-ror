@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_21_104648) do
+ActiveRecord::Schema.define(version: 2022_06_22_074444) do
 
   create_table "microposts", force: :cascade do |t|
     t.text "content"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2022_06_21_104648) do
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"
+    t.integer "otp"
   end
 
   add_foreign_key "microposts", "users"

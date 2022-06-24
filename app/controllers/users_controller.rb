@@ -12,12 +12,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    
     if @user.save
-      UserMailer.welcome_email(@user).deliver_now
+      #@random_number = random_number
       log_in @user
       flash[:success]= " Singed in successfully "
       redirect_to @user  #same as -> redirect_to user_url(@user)
-      #UserMailer.welcome_email(@user).deliver_now
+      #UserMailer.welcome_email(@user,@random_number).deliver_now
     else
       render "new"
     end
@@ -25,13 +26,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
-      flash[:success] = "Profile updated"
-      @user.reload
-      redirect_to @user
-    else
+      if @user.update(user_params)
+        flash[:success] = "Profile updated"
+        @user.reload
+        redirect_to @user
+      else
       render 'edit'
-    end
+      end
   end
 
   def show
@@ -52,12 +53,38 @@ class UsersController < ApplicationController
     redirect_to "index"
   end
 
+  def otpform
+    @user = current_user
+    @random_number = random_number
+    UserMailer.welcome_email(@user,@random_number).deliver_now
+    flash[:success] = "OTP sent!"
+  end
+
+  def otpverifier
+    @user = current_user
+    if @user.update(otp: @user.otp) && otp_checker(@user)
+      flash[:success] = "Profile Verified"
+      @user.reload
+      redirect_to @user
+    else
+    flash[:danger] = "Wrong OTP!"
+    render 'users/otpCheck'
+    end
+  end
+
 
   private
+
+    $random_number_global=0
+
     def user_params
       params.require(:user).permit(:name, :email, :password,
-      :password_confirmation)
+      :password_confirmation, :otp)
     end
+
+    # def otp_params
+    #   params.require(:user).permit(:otp)
+    # end
 
     def logged_in_user
       unless logged_in?
@@ -69,5 +96,20 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless @user=current_user 
+    end
+
+    def random_number
+      @random_number = rand(1000..9999)
+      random_number_global=@random_number
+      return @random_number
+    end
+
+    def otp_checker(user)
+      @user = user
+      if random_number_global == @user.otp
+        return true
+      else
+        return false
+      end
     end
 end

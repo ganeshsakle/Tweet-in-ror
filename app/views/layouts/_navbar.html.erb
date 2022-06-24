@@ -8,6 +8,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       </ul>
       <% if logged_in? %>
+        <%= link_to "Varify-Account", otpform_path ,class:"btn btn-outline-success me-4"%>
         <%= link_to "Users", users_path, class:"btn btn-outline-success me-4"%>
         <%= link_to "Profile", current_user,  class: "btn btn-outline-success me-4" %>
         <%= link_to "Log-out", logout_path, method: :delete, class: "btn btn-outline-success"%>

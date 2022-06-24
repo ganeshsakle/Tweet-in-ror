@@ -18,6 +18,7 @@ gem 'bcrypt'
 gem 'rails', '~> 6.1.6'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
+#gem 'pg', '~> 1.4', '>= 1.4.1'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
