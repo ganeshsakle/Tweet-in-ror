@@ -1,7 +1,7 @@
 <div class="form-check d-flex justify-content-center mb-4">
     <div class="form-outline mb-4">
         <p>Enter OTP, check your email</p>
-            <%= form_with model: @user do |form|%>
+            <%= form_with model: @user, url: '/otpform', method: :post do |form|%>
                 <%= form.label :otp , class:"form-label"%>
                 <%= form.text_field :otp ,class:"form-control"%><br>
                 <%= form.submit "Verify", class:"btn btn-primary btn-block mb-4"%>

@@ -68,7 +68,7 @@ class UsersController < ApplicationController
       redirect_to @user
     else
     flash[:danger] = "Wrong OTP!"
-    render 'users/otpCheck'
+    render 'users/otpform'
     end
   end
 
@@ -100,13 +100,13 @@ class UsersController < ApplicationController
 
     def random_number
       @random_number = rand(1000..9999)
-      random_number_global=@random_number
+      $random_number_global=@random_number
       return @random_number
     end
 
     def otp_checker(user)
       @user = user
-      if random_number_global == @user.otp
+      if $random_number_global == @user.otp
         return true
       else
         return false
