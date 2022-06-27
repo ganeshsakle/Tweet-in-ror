@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :users
   root to: 'users#index'
   get  '/signup', to: 'users#new'
   get  '/login',  to: 'sessions#new'
